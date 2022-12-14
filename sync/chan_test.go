@@ -66,3 +66,18 @@ func BenchmarkSelectProdCons(b *testing.B) {
 		<-c
 	}
 }
+
+func BenchmarkChanContended(b *testing.B) {
+	const C = 100
+	myc := make(chan int, C*runtime.GOMAXPROCS(0))
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			for i := 0; i < C; i++ {
+				myc <- 0
+			}
+			for i := 0; i < C; i++ {
+				<-myc
+			}
+		}
+	})
+}
