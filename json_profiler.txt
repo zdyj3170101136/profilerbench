@@ -1,0 +1,66 @@
+nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            139251 ns/op          93.61 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      14.035s
+nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$ -test.cpuprofile=cpu.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            167944 ns/op          77.61 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      17.003s
+nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$ -test.memprofile=mem.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            138586 ns/op          94.06 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      13.964s
+nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$ -test.trace=trace.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            159765 ns/op          81.59 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      16.092s
+nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$ -test.blockprofile=block.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            139721 ns/op          93.29 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      14.096s
+nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$ -test.mutexprofile=mutex.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            138663 ns/op          94.00 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      13.979s
+nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$ -test.cpuprofile=cpu.pprof -test.memprofile=mem.pprof -test.trace=trace.pprof -test.blockprofile=block.pprof -test.mutexprofile=mutex.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            180394 ns/op          72.26 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      18.354s
+perf record -C 0 -F 100 -B -g nice -n -20 numactl -C 0 -m 0 go test -test.bench=BenchmarkEncoder_Generic_StdLib -test.benchtime=100000x  -test.run=^$
+goos: linux
+goarch: amd64
+pkg: github.com/bytedance/sonic/encoder
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkEncoder_Generic_StdLib           100000            139390 ns/op          93.51 MB/s
+PASS
+ok      github.com/bytedance/sonic/encoder      14.066s
+[ perf record: Woken up 2 times to write data ]
+[ perf record: Captured and wrote 0.611 MB perf.data ]
