@@ -3,7 +3,10 @@
 cd sync
 
 # core=0
-core="0-3"
+core="0-7"
+# mutex:BenchmarkMutex
+# map:BenchmarkLoadMostlyHits
+# chan:BenchmarkSelectProdCons
 f="Benchmark"
 
 args="-test.bench=${f}  -test.run=^$"

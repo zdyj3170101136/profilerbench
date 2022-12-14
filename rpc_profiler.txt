@@ -1,0 +1,168 @@
+Checking whether the environment meets the requirements ...
+Check finished.
+Building grpc services by exec build_grpc.sh...
+Build finished.
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever  >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 17:52:41 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024  -c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 17:52:44.097025741 +0800 CST m=+1.258314708], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 17:56:36.349655887 +0800 CST m=+233.510944855], took 232252 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 86113.14, TP99: 3.59ms, TP999: 5.76ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 94.00%, TP50: 378.00%, TP90: 381.62%, TP99: 384.54%, MAX: 385.16%, AVG:376.76%, TOTAL:877.630000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 17 MB
+[GRPC@Server] CPU Usage: MIN: 94.00%, TP50: 378.00%, TP90: 381.62%, TP99: 384.54%, MAX: 385.16%, AVG:376.76%, TOTAL:877.630000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 17 MB
+[GRPC@Client] CPU Usage: MIN: 111.00%, TP50: 508.00%, TP90: 516.00%, TP99: 522.00%, MAX: 526.67%, AVG:494.72%, TOTAL:1192.180000s
+[GRPC@Client] Mem Usage: AVG: 350 MB, MAX: 746 MB
+
+
+Server [grpc] stopped, pid [25682].
+./benchmark_grpc.sh: line 40: 25682 Killed                  nohup $server
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever -test.cpuprofile=cpu.pprof >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 17:56:46 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -test.cpuprofile=cpu.pprof -c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 17:56:48.7908341 +0800 CST m=+1.135565395], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:00:18.997664737 +0800 CST m=+211.342396031], took 210206 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 95144.40, TP99: 3.47ms, TP999: 5.75ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 79.92%, TP50: 387.00%, TP90: 390.00%, TP99: 393.00%, MAX: 394.00%, AVG:385.26%, TOTAL:812.660000s
+[GRPC@Server] Mem Usage: AVG: 24 MB, MAX: 28 MB
+[GRPC@Server] CPU Usage: MIN: 79.92%, TP50: 387.00%, TP90: 390.00%, TP99: 393.00%, MAX: 394.00%, AVG:385.26%, TOTAL:812.660000s
+[GRPC@Server] Mem Usage: AVG: 24 MB, MAX: 28 MB
+[GRPC@Client] CPU Usage: MIN: 108.89%, TP50: 556.00%, TP90: 562.00%, TP99: 566.00%, MAX: 570.00%, AVG:538.48%, TOTAL:1178.950000s
+[GRPC@Client] Mem Usage: AVG: 363 MB, MAX: 822 MB
+
+
+Server [grpc] stopped, pid [26006].
+./benchmark_grpc.sh: line 40: 26006 Killed                  nohup $server
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever -test.trace=trace.pprof >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 18:00:29 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -test.trace=trace.pprof -c=100-n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 18:00:32.129386602 +0800 CST m=+1.672265678], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:05:48.80630928 +0800 CST m=+318.349188352], took 316676 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 63155.86, TP99: 4.46ms, TP999: 7.27ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 262.00%, TP50: 385.00%, TP90: 389.00%, TP99: 391.00%, MAX: 391.00%, AVG:384.61%, TOTAL:1218.930000s
+[GRPC@Server] Mem Usage: AVG: 16 MB, MAX: 20 MB
+[GRPC@Server] CPU Usage: MIN: 262.00%, TP50: 385.00%, TP90: 389.00%, TP99: 391.00%, MAX: 391.00%, AVG:384.61%, TOTAL:1218.930000s
+[GRPC@Server] Mem Usage: AVG: 16 MB, MAX: 20 MB
+[GRPC@Client] CPU Usage: MIN: 244.00%, TP50: 611.00%, TP90: 619.00%, TP99: 624.00%, MAX: 628.00%, AVG:600.63%, TOTAL:1959.240000s
+[GRPC@Client] Mem Usage: AVG: 350 MB, MAX: 726 MB
+
+
+Server [grpc] stopped, pid [26289].
+./benchmark_grpc.sh: line 40: 26289 Killed                  nohup $server
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever -test.blockprofile=block.pprof >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 18:05:59 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -test.blockprofile=block.pprof-c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 18:06:02.211119223 +0800 CST m=+1.307960306], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:10:01.066657511 +0800 CST m=+240.163498602], took 238855 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 83732.63, TP99: 3.70ms, TP999: 5.83ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 370.00%, TP50: 378.38%, TP90: 382.62%, TP99: 385.00%, MAX: 385.39%, AVG:378.09%, TOTAL:902.820000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 17 MB
+[GRPC@Server] CPU Usage: MIN: 370.00%, TP50: 378.38%, TP90: 382.62%, TP99: 385.00%, MAX: 385.39%, AVG:378.09%, TOTAL:902.820000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 17 MB
+[GRPC@Client] CPU Usage: MIN: 213.00%, TP50: 604.00%, TP90: 615.00%, TP99: 622.00%, MAX: 624.00%, AVG:590.46%, TOTAL:1464.780000s
+[GRPC@Client] Mem Usage: AVG: 349 MB, MAX: 721 MB
+
+
+Server [grpc] stopped, pid [26696].
+./benchmark_grpc.sh: line 40: 26696 Killed                  nohup $server
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever -test.mutexprofile=mutex.pprof >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 18:10:11 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -test.mutexprofile=mutex.pprof-c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 18:10:13.946042554 +0800 CST m=+1.262013191], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:14:05.411140575 +0800 CST m=+232.727111227], took 231465 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 86406.11, TP99: 3.56ms, TP999: 5.67ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 175.82%, TP50: 378.38%, TP90: 382.38%, TP99: 385.00%, MAX: 386.00%, AVG:377.42%, TOTAL:875.370000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 16 MB
+[GRPC@Server] CPU Usage: MIN: 175.82%, TP50: 378.38%, TP90: 382.38%, TP99: 385.00%, MAX: 386.00%, AVG:377.42%, TOTAL:875.370000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 16 MB
+[GRPC@Client] CPU Usage: MIN: 111.00%, TP50: 511.00%, TP90: 523.00%, TP99: 528.00%, MAX: 533.00%, AVG:497.88%, TOTAL:1194.930000s
+[GRPC@Client] Mem Usage: AVG: 350 MB, MAX: 721 MB
+
+
+Server [grpc] stopped, pid [27013].
+./benchmark_grpc.sh: line 40: 27013 Killed                  nohup $server
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever -test.cpuprofile=cpu.pprof -test.memprofile=mem.pprof -test.trace=trace.pprof -test.blockprofile=block.pprof -test.mutexprofile=mutex.pprof >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 18:14:16 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -test.cpuprofile=cpu.pprof -test.memprofile=mem.pprof -test.trace=trace.pprof -test.blockprofile=block.pprof -test.mutexprofile=mutex.pprof -c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 18:14:18.313064009 +0800 CST m=+1.540635890], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:19:19.436472363 +0800 CST m=+302.664044243], took 301123 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 66417.95, TP99: 4.57ms, TP999: 7.92ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 42.00%, TP50: 391.00%, TP90: 394.00%, TP99: 396.00%, MAX: 396.00%, AVG:389.05%, TOTAL:1174.670000s
+[GRPC@Server] Mem Usage: AVG: 28 MB, MAX: 36 MB
+[GRPC@Server] CPU Usage: MIN: 42.00%, TP50: 391.00%, TP90: 394.00%, TP99: 396.00%, MAX: 396.00%, AVG:389.05%, TOTAL:1174.670000s
+[GRPC@Server] Mem Usage: AVG: 28 MB, MAX: 36 MB
+[GRPC@Client] CPU Usage: MIN: 252.00%, TP50: 678.00%, TP90: 685.00%, TP99: 689.00%, MAX: 691.00%, AVG:664.67%, TOTAL:2066.560000s
+[GRPC@Client] Mem Usage: AVG: 364 MB, MAX: 735 MB
+
+
+Server [grpc] stopped, pid [27321].
+./benchmark_grpc.sh: line 40: 27321 Killed                  nohup $server
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever -test.memprofile=mem.pprof >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 18:19:30 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -test.memprofile=mem.pprof -c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 18:19:32.947140181 +0800 CST m=+1.268126665], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:23:24.015586233 +0800 CST m=+232.336572717], took 231068 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 86554.47, TP99: 3.57ms, TP999: 5.72ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 350.00%, TP50: 378.62%, TP90: 382.77%, TP99: 385.00%, MAX: 386.00%, AVG:378.41%, TOTAL:874.710000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 17 MB
+[GRPC@Server] CPU Usage: MIN: 350.00%, TP50: 378.62%, TP90: 382.77%, TP99: 385.00%, MAX: 386.00%, AVG:378.41%, TOTAL:874.710000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 17 MB
+[GRPC@Client] CPU Usage: MIN: 109.00%, TP50: 511.00%, TP90: 521.00%, TP99: 524.00%, MAX: 527.00%, AVG:498.04%, TOTAL:1191.800000s
+[GRPC@Client] Mem Usage: AVG: 279 MB, MAX: 722 MB
+
+
+Server [grpc] stopped, pid [27694].
+./benchmark_grpc.sh: line 40: 27694 Killed                  nohup $server
+Starting server [grpc], if failed please check [output/log/nohup.log] for detail.
+nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever -test.fgprofile=fg.pprof >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 18:23:34 server listening at [::]:8000
+nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -test.fgprofile=fg.pprof -c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 18:23:36.563432225 +0800 CST m=+1.250852839], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:27:44.153425209 +0800 CST m=+248.840845854], took 247589 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 80778.71, TP99: 4.89ms, TP999: 11.21ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 226.00%, TP50: 384.00%, TP90: 388.39%, TP99: 391.00%, MAX: 391.00%, AVG:383.10%, TOTAL:949.950000s
+[GRPC@Server] Mem Usage: AVG: 71 MB, MAX: 103 MB
+[GRPC@Server] CPU Usage: MIN: 226.00%, TP50: 384.00%, TP90: 388.39%, TP99: 391.00%, MAX: 391.00%, AVG:383.10%, TOTAL:949.950000s
+[GRPC@Server] Mem Usage: AVG: 71 MB, MAX: 103 MB
+[GRPC@Client] CPU Usage: MIN: 110.00%, TP50: 492.00%, TP90: 501.00%, TP99: 517.00%, MAX: 529.00%, AVG:481.03%, TOTAL:1231.780000s
+[GRPC@Client] Mem Usage: AVG: 386 MB, MAX: 724 MB
+
+
+Server [grpc] stopped, pid [28014].
+./benchmark_grpc.sh: line 40: 28014 Killed                  nohup $server
+perf record -F 100 -g -B -C 0-3 nice -n -20 numactl -C 0,1,2,3 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_reciever >> /root/kitex-benchmark/scripts/../output/log/nohup.log 2>&1
+2022/12/14 18:27:54 server listening at [::]:8000
+perf record -F 100 -g -B -C 4-15 nice -n -20 numactl -C 4-15 -m 0 /root/kitex-benchmark/scripts/../output/bin/grpc_bencher -addr=127.0.0.1:8000 -b=1024 -c=100 -n=20000000 --sleep=0
+Info: [GRPC] start benching [2022-12-14 18:27:57.135058351 +0800 CST m=+1.282122752], concurrent: 100, total: 20000000, sleep: 0
+Info: [GRPC]: finish benching [2022-12-14 18:31:48.985130199 +0800 CST m=+233.132194607], took 231850 ms for 20000000 requests
+Info: [GRPC]: requests total: 20000000, failed: 0
+Info: [GRPC]: TPS: 86262.65, TP99: 3.59ms, TP999: 5.70ms (b=1024 Byte, c=100, n=20000000)
+[GRPC@Server] CPU Usage: MIN: 320.00%, TP50: 378.00%, TP90: 382.00%, TP99: 385.00%, MAX: 385.00%, AVG:377.84%, TOTAL:876.350000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 16 MB
+[GRPC@Server] CPU Usage: MIN: 320.00%, TP50: 378.00%, TP90: 382.00%, TP99: 385.00%, MAX: 385.00%, AVG:377.84%, TOTAL:876.350000s
+[GRPC@Server] Mem Usage: AVG: 15 MB, MAX: 16 MB
+[GRPC@Client] CPU Usage: MIN: 110.89%, TP50: 510.00%, TP90: 519.00%, TP99: 526.00%, MAX: 530.00%, AVG:495.24%, TOTAL:1193.080000s
+[GRPC@Client] Mem Usage: AVG: 350 MB, MAX: 721 MB
+
+
+[ perf record: Woken up 145 times to write data ]
+[ perf record: Captured and wrote 39.009 MB perf.data ]
+Server [grpc] stopped, pid [28348
+28350].
+./benchmark_grpc.sh: line 40: 28348 Killed                  nohup $server

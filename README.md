@@ -1,8 +1,6 @@
 this benchmark bench different profiler type overhead cost.
 
 it is not very accuracy.
-#### pre benchmark
-git clone https://github.com/zdyj3170101136/perfbench.git
 #### environment
 go version go1.18.4 linux/amd64
 
@@ -25,12 +23,11 @@ performance 模式（不支持）:
 https://wsgzao.github.io/post/cpupower/
 ## benchmark
 ### json
+单核测试。
 #### description
 使用 github.com/bytedance/sonic 的性能测试代码。
 
 循坏 json marshal。
-
-单核测试。
 ```go
 func BenchmarkEncoder_Generic_StdLib(b *testing.B) {
 	_, _ = json.Marshal(_GenericValue)
@@ -50,17 +47,38 @@ func BenchmarkEncoder_Generic_StdLib(b *testing.B) {
 | block             | 0%    |
 | trace             | 14%   |
 | all               | 33%   |
-| perf cpu          | < 1%  |
+| perf cpu          | 0%    |
 | fgprof            | 24%   |
+
+### rpc
+使用 github.com/bytedance/kitex-benchmark 中测试 grpc 的代码。
+
+服务端 4 个 core。
+
+客户端 12 个 core，100 个连接，通过 unary 总共发送两千万条 1kb 的消息。
+
+#### result
+| Profiler         | Delta |
+|------------------|-------|
+| cpu              | -10%  |
+| mem              | 0%    |
+| mutex            | 0%    |
+| block            | 3%    |
+| trace            | 36%   |
+| all              | 30%   |
+| perf cpu         | 0%    |
+| fgprof           | 6%    |
 
 ### sync
 使用 go sdk sync 包中的压测代码。
+
+八核测试。
 #### chan
 ##### description
 sync/chan_test.go
-开启 procs 个 producer, consumer。
+分别开启 procs 个 producer 和 consumer。
 
-producer 和 consumer 通过 select chan 传递数据
+producer 和 consumer 通过 select chan 总共发送 1 亿条 msg。
 ##### result
 | Profiler         | Delta |
 |------------------|-------|
