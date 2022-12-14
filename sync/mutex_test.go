@@ -1,5 +1,5 @@
-// package sync copy from sync/mutex_test.go
-package sync
+// package sync_test copy from sync/mutex_test.go
+package sync_test
 
 import (
 	"log"

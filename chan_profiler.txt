@@ -1,0 +1,74 @@
+nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000              934.1 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    93.513s
+nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$ -test.cpuprofile=cpu.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000              972.5 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    97.417s
+nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$ -test.trace=trace.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000             1018 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    101.926s
+nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$ -test.blockprofile=block.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000             1005 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    100.544s
+nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$ -test.mutexprofile=mutex.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000              994.3 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    99.501s
+perf record -C 0-7 -F 100 -B -g nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000              993.1 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    99.399s
+[ perf record: Woken up 33 times to write data ]
+[ perf record: Captured and wrote 9.357 MB perf.data ]
+nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$ -test.cpuprofile=cpu.pprof -test.memprofile=mem.pprof -test.trace=trace.pprof -test.blockprofile=block.pprof -test.mutexprofile=mutex.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000             1011 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    101.355s
+nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$ -test.memprofile=mem.pprof
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000              986.0 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    98.655s
+fgprof nice -n -20 numactl -C 0-7 -m 0 go test -test.bench=BenchmarkSelectProdCons -test.benchtime=100000000x  -test.run=^$
+goos: linux
+goarch: amd64
+pkg: github.com/zdyj3170101136/profilerbench/sync
+cpu: Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+BenchmarkSelectProdCons-8       100000000              996.8 ns/op
+PASS
+ok      github.com/zdyj3170101136/profilerbench/sync    99.782s

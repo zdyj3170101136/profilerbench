@@ -15,7 +15,7 @@ export SONIC_NO_ASYNC_GC=1
 # core=0
 # f="BenchmarkEncoder_Generic_StdLib"
 # procs=1
-core="0-3"
+core="0"
 f="BenchmarkEncoder_Parallel_Generic_StdLib"
 
 args="-test.bench=${f} -test.benchtime=150000x  -test.run=^$"
