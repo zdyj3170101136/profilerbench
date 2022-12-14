@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-cd mutex
+cd sync
 
 # core=0
-core="0-9"
+core="0-3"
 f="Benchmark"
 
-args="-test.bench=${f} -test.benchtime=1000000000x  -test.run=^$"
+args="-test.bench=${f}  -test.run=^$"
 
 cpu_cmd="nice -n -20 numactl -C ${core} -m 0"
 
